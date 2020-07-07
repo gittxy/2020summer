@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.bx_web.dao.OrderDao">
+    <!--<resultMap type="Order" id="OrderData">
+        <id property="order_id" column="ORDER_ID" />
+        <result property="user_id" column="user_id" />
+        <result property="payment" column="payment" />
+        <result property="status" column="status" />
+        <result property="update_time" column="update_time"/>
+    </resultMap>-->
+
+    <select id="OrderR" resultMap="com.example.bx_web.model.Order">
+        select * from orders where order_id=#{order_id}
+    </select>
+
+</mapper>
