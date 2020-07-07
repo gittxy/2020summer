@@ -15,6 +15,7 @@ public class BxWebApplication extends SpringBootServletInitializer {
         return application.sources(BxWebApplication.class);
     }
 
+
     public static void main(String[] args) {
         SpringApplication.run(BxWebApplication.class, args);
     }
