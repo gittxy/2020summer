@@ -3,7 +3,6 @@ package com.example.bx_web.service.impl;
 import com.example.bx_web.mapper.UserMapper;
 import com.example.bx_web.pojo.User;
 import com.example.bx_web.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -16,7 +15,6 @@ public class UserServiceImpl implements UserService {
     public User userLogin(User user) {
         return this.userMapper.userLogin(user);
     }
-
 
     @Override
     public void userRegister(User user) {

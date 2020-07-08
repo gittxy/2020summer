@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
 <mapper namespace="com.example.bx_web.mapper.UserMapper">
+
     <!--普通用户登录-->
     <select id="userLogin" parameterType="com.example.bx_web.pojo.User" resultType="com.example.bx_web.pojo.User">
         SELECT *
@@ -11,11 +13,12 @@
         limit 0,1
     </select>
 
+
     <insert id="RegisterStudent" parameterType="com.example.bx_web.pojo.User">
-        INSERT INTO user(username,password,role_id,) values(#{username},#{password},#{role_id})
+        INSERT INTO user(username,password,role_id) values(#{username},#{password},#{role_id})
     </insert>
 
-    <select id="userinfo" resultType="com.example.bx_web.pojo.User">
+    <select id="userinfo" parameterType="int" resultType="com.example.bx_web.pojo.User">
         SELECT *
         FROM user
         where user_id = #{user_id}
@@ -40,5 +43,6 @@
         </trim>
         WHERE user_id=#{user_id}
     </update>
+
 
 </mapper>

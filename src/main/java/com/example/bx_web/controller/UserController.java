@@ -1,19 +1,18 @@
 package com.example.bx_web.controller;
 
-import com.example.bx_web.pojo.Message;
 import com.example.bx_web.pojo.User;
 import com.example.bx_web.service.UserService;
 import com.example.bx_web.utils.JsonUtils;
 import com.google.gson.Gson;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
+@ResponseBody
 public class UserController {
     @Autowired
     public UserService userService;
@@ -22,20 +21,15 @@ public class UserController {
      * 给VueLoginInfoVo对象加入@Valid注解，并在参数中加入BindingResult来获取错误信息。
      * 在逻辑处理中我们判断BindingResult知否含有错误信息，如果有错误信息，则直接返回错误信息。
      */
-    @RequestMapping("/index")
-    public String execute() {
-        System.out.println("进入方法");
-        return "/index";
-    }
-
     @RequestMapping(value = "/login")
-    @ResponseBody
     public String Login(String jsonStr) throws JSONException {
-//        String test="{\"username\":\"stockton\",\"password\":\"000000\",\"role_id\":2}";
+        System.out.println("success");
+        String test="{\"username\":\"stockton\",\"password\":\"000000\",\"role_id\":2}";
         Gson gson = new Gson();
         User user = gson.fromJson(jsonStr, User.class);
         User iuser=userService.userLogin(user);
-//        System.out.println(user);
+        System.out.println(JsonUtils.putJson(user));
+//        System.out.println(jsonStr);
 //        System.out.println(iuser);
         if(iuser!=null){
             System.out.println(JsonUtils.putJson(iuser));

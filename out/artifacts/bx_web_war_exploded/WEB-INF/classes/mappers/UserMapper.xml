@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.bx_web.dao.UserDao">
     <!--普通用户登录-->
-    <select id="userLogin" resultType="com.example.bx_web.model.User">
+    <select id="userLogin" resultType="com.example.bx_web.pojo.User">
         SELECT *
         FROM user
         where username = #{username}
