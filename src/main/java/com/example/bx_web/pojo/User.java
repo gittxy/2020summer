@@ -1,4 +1,4 @@
-package com.example.bx_web.model;
+package com.example.bx_web.pojo;
 
 public class User {
     private int user_id;
@@ -16,6 +16,41 @@ public class User {
     private String identity;
     private String active;
     private String code;
+    private int points;
+    private int role_id;
+
+    public User() {
+
+    }
+
+    public User(int user_id) {
+        this.user_id = user_id;
+    }
+
+    public User(String username, String password, int role_id) {
+        this.username = username;
+        this.password = password;
+        this.role_id = role_id;
+    }
+
+    public User(int user_id, String username, String nickname, String password, String gender, String email, String phone, String zip_code, String location, int age, String country, String detail_address, String identity, String active, String code, int points) {
+        this.user_id = user_id;
+        this.username = username;
+        this.nickname = nickname;
+        this.password = password;
+        this.gender = gender;
+        this.email = email;
+        this.phone = phone;
+        this.zip_code = zip_code;
+        this.location = location;
+        this.age = age;
+        this.country = country;
+        this.detail_address = detail_address;
+        this.identity = identity;
+        this.active = active;
+        this.code = code;
+        this.points = points;
+    }
 
     public int getUser_id() {
         return user_id;
@@ -135,5 +170,21 @@ public class User {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
+    public int getRole_id() {
+        return role_id;
+    }
+
+    public void setRole_id(int role_id) {
+        this.role_id = role_id;
     }
 }

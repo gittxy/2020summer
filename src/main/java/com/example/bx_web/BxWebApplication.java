@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
-@MapperScan("com.example.bx_web.dao")
+@MapperScan("com.example.bx_web.mapper")
 @SpringBootApplication
 public class BxWebApplication extends SpringBootServletInitializer {
     @Override
