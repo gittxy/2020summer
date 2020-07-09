@@ -6,6 +6,7 @@ import com.example.bx_web.service.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
@@ -29,5 +30,21 @@ public class UserServiceImpl implements UserService {
     @Override
     public void modifyinfo(User user) {
         this.userMapper.modifyinfo(user);
+    }
+
+    @Override
+    public void add(User user) {
+        this.userMapper.add(user);
+    }
+
+    @Override
+    public void delete(int user_id) {
+        this.userMapper.delete(user_id);
+    }
+
+
+    @Override
+    public List<User> getAllUser(){
+        return this.userMapper.getAllUser();
     }
 }
