@@ -12,12 +12,12 @@
 	</resultMap>
 
 	<!-- 角色插入操作 -->
-	<insert id="add" parameterType="Role">
+	<insert id="add" parameterType="com.example.bx_web.pojo.Role">
 		insert into role(role_id,name,code,description,created,updated) values(#{role_id},#{name},#{code},#{description},#{created},#{updated})
 	</insert>
 
 	<!-- 根据id获取角色 -->
-	<select id="find" parameterType="Long" resultType="Role">
+	<select id="find" parameterType="Long" resultType="com.example.bx_web.pojo.Role">
 		select * from role where role_id = #{role_id}
 	</select>
 

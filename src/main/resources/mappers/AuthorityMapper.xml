@@ -14,7 +14,7 @@
 	</resultMap>
 
 	<!-- 权限插入操作 -->
-	<insert id="add" parameterType="Authority">
+	<insert id="add" parameterType="com.example.bx_web.pojo.Authority">
 		insert into privilege(priv_id,name,code,url,parent_id,created,updated,is_parent) values(#{priv_id},#{name},#{code},
 		#{url},#{parent_id},#{created},#{updated},#{is_parent})
 	</insert>

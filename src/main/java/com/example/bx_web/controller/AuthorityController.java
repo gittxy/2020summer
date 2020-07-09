@@ -1,7 +1,6 @@
 package com.example.bx_web.controller;
 
 import com.example.bx_web.pojo.Authority;
-import com.example.bx_web.pojo.Role;
 import com.example.bx_web.service.AuthorityService;
 import com.example.bx_web.utils.JsonUtils;
 import com.google.gson.Gson;

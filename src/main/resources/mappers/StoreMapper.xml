@@ -14,7 +14,7 @@
     </resultMap>
 
     <!-- 添加商店操作 -->
-    <insert id="add" parameterType="Store">
+    <insert id="add" parameterType="com.example.bx_web.pojo.Store">
         insert into store(store_id,store_manager_id,store_phone_num,store_telephone,store_name,store_position,created,updated) values(#{store_id},#{store_manager_id},#{store_phone_num},
                                                                                                 #{store_telephone},#{store_name},#{store_position},#{created},#{updated})
     </insert>

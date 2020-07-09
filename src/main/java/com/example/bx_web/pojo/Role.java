@@ -1,6 +1,5 @@
 package com.example.bx_web.pojo;
 
-import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
@@ -9,7 +8,7 @@ import java.util.Date;
  * @author txy
  *
  */
-@Component
+
 public class Role {
 
 	private Long role_id;
