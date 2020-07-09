@@ -31,11 +31,11 @@
 		<trim prefix="set" suffixOverrides=",">
 			<if test="name">name=#{name},</if>
 			<if test="code">code=#{code},</if>
-			<if test="url">description=#{url},</if>
-			<if test="parent_id">description=#{parent_id},</if>
+			<if test="url">url=#{url},</if>
+			<if test="parent_id">parent_id=#{parent_id},</if>
 			<if test="created">created=#{created},</if>
 			<if test="updated">phone=#{updated},</if>
-			<if test="is_parent">description=#{is_parent},</if>
+			<if test="is_parent">is_parent=#{is_parent},</if>
 		</trim>
 		WHERE priv_id=#{priv_id}
 	</update>
