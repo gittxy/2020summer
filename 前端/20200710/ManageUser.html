@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/styletable.css">
+</head>
+<style>
+   .tr_active{ background: red; } 
+</style>
+<body>
+ <div class="container">   
+    <input type="button" class="btn btn-primary" onclick="addTr2('newTB',-1)" value="添加">
+     <input type="button" class="btn btn-primary" onclick="delTr2()" value="删除">
+    <table class="table table-bordered" id="tab">
+                
+                <thead>
+                    <tr>
+                        <th><input id="allCkb" type="checkbox"/></th>
+                        <th scope="col">用户名</th>
+                        <th scope="col">角色</th>
+                        <th scope="col">密码</th>
+                        <th scope="col">个人签名</th>
+                        <th scope="col">操作</th>
+                    </tr>
+                </thead>
+                <tbody id="newTB">
+                    <tr>
+                        <td><input type="checkbox" name="ckb"/></td>
+                        <td>小学期好难</td>
+                        <td>用户</td>
+                        <td>999999</td>
+                        <td>苦中作乐</td>
+                        <td><a class="modify" href="javascript:;">修改</a></td>
+                    </tr>
+                </tbody>
+            </table> 
+
+         <input type="button" class="btn btn-primary fr" id="savasubmit" value="提交修改">
+</div>         
+ <script type="text/javascript" src="../js/jquery.min.js"></script> 
+<script type="text/javascript">
+            
+
+
+            function delTr(ckb){
+                //获取选中的复选框，然后循环遍历删除
+                var ckbs=$("input[name="+ckb+"]:checked");
+                if(ckbs.size()==0){
+                alert("要删除指定行，需选中要删除的行！");
+                return;
+                }
+            ckbs.each(function(){
+                $(this).parent().parent().remove();
+                });
+            }
+            function delTr2(){
+                delTr('ckb');
+            }
+
+              
+
+
+            function addTr2(tab,row){
+                /*添加表格行*/
+                var trHtml='<tr><td><input type="checkbox" name="ckb"/></td><td></td><td></td><td></td><td></td><td><a class="modify" href="javascript:;">修改</a></td></tr>';
+               /* addTr(tab, row, trHtml);*/
+                $("#newTB").append(trHtml);
+                /*写法2
+                var newrow = document.all.tab.rows[1].cloneNode(true); //克隆一行 
+                $("#newTB").append(newrow);*/
+                
+            }
+
+             
+
+            function allCheck(allCkb, items){
+                //全選/全不选
+                var flag = true;
+                $("#"+allCkb).click(function() {
+                    var cb = $("input[type=checkbox]");
+                    for(var i = 0; i < cb.length; i++) {
+                        cb[i].checked = flag;
+                    }
+                    flag = !flag;
+                })
+
+            }
+
+          $(function(){
+                //编辑
+                $("#newTB").on('click','.modify',function() {
+                    str = $(this).text()=="修改"?"确定":"修改";  
+                    $(this).text(str);   // 按钮被点击后，在“编辑”和“确定”之间切换
+                    $(this).parent().siblings("td:eq(1)").each(function() {  // 获取当前行的第二列单元格
+                        obj_text = $(this).find("input:text");    // 判断单元格下是否有文本框
+                        if(!obj_text.length)   // 如果没有文本框，则添加文本框使之可以编辑
+                            $(this).html("<input type='text' name='ckb' class='form-control' placeholder='请输入字段名称' value='"+$(this).text()+"'>");
+                        else   // 如果已经存在文本框，则将其显示为文本框修改的值
+                            $(this).html(obj_text.val()); 
+                    });
+                    $(this).parent().siblings("td:eq(2)").each(function() {  // 获取当前行的第二列单元格
+                        obj_text = $(this).find("select");    // 判断单元格下是否有文本框
+                        if(!obj_text.length)   // 如果没有文本框，则添加文本框使之可以编辑
+                           {
+                             var typehtml='<select class="form-control">'+
+                                          '<option>用户</option>'+
+                                          '<option>vip用户</option>'+
+                                          '<option>商家</option>'+
+                                        
+                                        '</select>';
+                              $(this).html(typehtml);
+                           }else   // 如果已经存在文本框，则将其显示为文本框修改的值
+                            {
+                               
+                                $(this).html(obj_text.val()); 
+                            }
+                    });
+                    $(this).parent().siblings("td:eq(3)").each(function() {  // 获取当前行的第二列单元格
+                        obj_text = $(this).find("input:text");    // 判断单元格下是否有文本框
+                        if(!obj_text.length)   // 如果没有文本框，则添加文本框使之可以编辑
+                            $(this).html("<input type='text' name='ckb' class='form-control' placeholder='请输入字段长度' value='"+$(this).text()+"'>");
+                        else   // 如果已经存在文本框，则将其显示为文本框修改的值
+                            $(this).html(obj_text.val()); 
+                    });
+                    $(this).parent().siblings("td:eq(4)").each(function() {  // 获取当前行的第二列单元格
+                        obj_text = $(this).find("input:text");    // 判断单元格下是否有文本框
+                        if(!obj_text.length)   // 如果没有文本框，则添加文本框使之可以编辑
+                            $(this).html("<input type='text' name='ckb' class='form-control' placeholder='请输入字段描述' value='"+$(this).text()+"'>");
+                        else   // 如果已经存在文本框，则将其显示为文本框修改的值
+                            $(this).html(obj_text.val()); 
+                    });
+                });
+
+                //全选
+                allCheck("allCkb", "ckb");
+
+              //提交 获取table中的数据
+               $("#savasubmit").on('click',function () {
+
+                    var tablename=$("#tablename").val();
+                    var set = {};
+                    //var set = [];
+                    $('#tab #newTB').each(function(index) {
+                        var table = [];
+                        $(this).find('tr').each(function() {
+                            var row = [];
+                            $(this).find('th,td').each(function() {
+                                row.push($(this).text().trim());
+
+                            });
+                            row.splice(-1,1);
+                            row.splice(0,1)
+                            table.push(row);
+
+                        });
+                        
+                        /*set.push(map);
+                        set.push(table);*/
+                        
+                        set["data"]=table;
+                        set["tablename"] = tablename;
+                    })
+
+                    console.log(set);
+              })
+
+
+
+            }); 
+
+
+
+
+
+        </script>        
+</body>
+</html>
