@@ -1,12 +1,13 @@
 package com.example.bx_web.mapper;
 
 import com.example.bx_web.pojo.Book;
+import org.apache.ibatis.annotations.Mapper;
 
+import java.math.BigInteger;
 import java.util.List;
 
+@Mapper
 public interface BookMapper {
-    void add(Book book);
-    void delete(Long book_id, Long store_id);
-    List<Book> getAllBook(Long store_id);
-    int edit(Book book);
+    List<Book> booklist();
+    Book bookinfo(BigInteger book_id);
 }

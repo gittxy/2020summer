@@ -10,31 +10,31 @@ import java.util.List;
 @Service("cartService")
 public class CartServiceImpl implements CartService {
     @Resource
-    private CartMapper cartmapper;
+    private CartMapper cartMapper;
 
 
     @Override
     public void add(Cart cart) {
-
+        this.cartMapper.add(cart);
     }
 
     @Override
     public void edit(Cart cart) {
-
+        this.cartMapper.edit(cart);
     }
 
     @Override
     public void delete(int cart_id) {
-
+        this.cartMapper.delete(cart_id);
     }
 
     @Override
     public List<Cart> findList(int user_id) {
-        return this.cartmapper.findList(user_id);
+        return this.cartMapper.findList(user_id);
     }
 
     @Override
     public Integer getTotal(int cart_id) {
-        return this.cartmapper.getTotal(cart_id);
+        return this.cartMapper.getTotal(cart_id);
     }
 }

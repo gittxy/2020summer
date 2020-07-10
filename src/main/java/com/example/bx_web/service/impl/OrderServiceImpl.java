@@ -22,16 +22,16 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void addorder(Order order) {
-
+        this.addorder(order);
     }
 
     @Override
     public void editorder(Order order) {
-
+        this.orderMapper.editorder(order);
     }
 
     @Override
     public void deleteorder(Order order) {
-
+        this.deleteorder(order);
     }
 }

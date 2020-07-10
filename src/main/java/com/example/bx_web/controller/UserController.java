@@ -1,6 +1,5 @@
 package com.example.bx_web.controller;
 
-import com.example.bx_web.pojo.Role;
 import com.example.bx_web.pojo.User;
 import com.example.bx_web.service.UserService;
 import com.example.bx_web.utils.JsonUtils;
@@ -8,14 +7,11 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 
 @Controller
-@ResponseBody
 public class UserController {
     @Autowired
     public UserService userService;
@@ -24,15 +20,20 @@ public class UserController {
      * 给VueLoginInfoVo对象加入@Valid注解，并在参数中加入BindingResult来获取错误信息。
      * 在逻辑处理中我们判断BindingResult知否含有错误信息，如果有错误信息，则直接返回错误信息。
      */
+    @RequestMapping("/index")
+    public String execute() {
+        System.out.println("进入方法");
+        return "/index";
+    }
+
     @RequestMapping(value = "/login")
+    @ResponseBody
     public String Login(String jsonStr) throws JSONException {
-        System.out.println("success");
-        String test="{\"username\":\"stockton\",\"password\":\"000000\",\"role_id\":2}";
+//        String test="{\"username\":\"stockton\",\"password\":\"000000\",\"role_id\":2}";
         Gson gson = new Gson();
         User user = gson.fromJson(jsonStr, User.class);
         User iuser=userService.userLogin(user);
-        System.out.println(JsonUtils.putJson(user));
-//        System.out.println(jsonStr);
+        System.out.println("进来了");
 //        System.out.println(iuser);
         if(iuser!=null){
             System.out.println(JsonUtils.putJson(iuser));
@@ -43,6 +44,7 @@ public class UserController {
             return null;
         }
     }
+
     @RequestMapping(value = "/register")
     public void Register(String jsonStr) throws JSONException {
         Gson gson = new Gson();
@@ -65,27 +67,13 @@ public class UserController {
         userService.modifyinfo(user);
         System.out.println(JsonUtils.putJson("success"));
     }
-
-    @RequestMapping(value = "/addUser")
-    public void AddUser(String jsonStr) throws JSONException {
+    @RequestMapping(value = "/recharge")
+    public void Recharge(String jsonStr) throws JSONException {
+//        String test="{\"user_id\":\"2\"}";
         Gson gson = new Gson();
         User user = gson.fromJson(jsonStr, User.class);
-        userService.add(user);
-    }
-
-    @RequestMapping(value = "/deleteUser")
-    public void DeleteUser(String jsonStr) throws JSONException {
-        Gson gson=new Gson();
-        User user = gson.fromJson(jsonStr, User.class);
-        userService.delete(user.getUser_id());
-    }
-
-
-    @RequestMapping(value = "/getTotalUser")
-    public String GetTotalUser() throws JSONException {
-        List<User> list = userService.getAllUser();
-
-        return JsonUtils.putJson(list);
+        userService.rechargeMember(user.getUser_id());
+        System.out.println(JsonUtils.putJson("success"));
     }
 
 }

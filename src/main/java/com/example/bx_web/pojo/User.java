@@ -1,5 +1,7 @@
 package com.example.bx_web.pojo;
 
+import java.sql.Timestamp;
+
 public class User {
     private int user_id;
     private String username;
@@ -14,8 +16,10 @@ public class User {
     private String country;
     private String detail_address;
     private String identity;
-    private String active;
+    private int active;
     private String code;
+    private Timestamp end;
+    private Timestamp created;
     private int points;
     private int role_id;
 
@@ -33,7 +37,7 @@ public class User {
         this.role_id = role_id;
     }
 
-    public User(int user_id, String username, String nickname, String password, String gender, String email, String phone, String zip_code, String location, int age, String country, String detail_address, String identity, String active, String code, int points) {
+    public User(int user_id, String username, String nickname, String password, String gender, String email, String phone, String zip_code, String location, int age, String country, String detail_address, String identity, int active, String code, Timestamp end, Timestamp created, int points, int role_id) {
         this.user_id = user_id;
         this.username = username;
         this.nickname = nickname;
@@ -49,7 +53,10 @@ public class User {
         this.identity = identity;
         this.active = active;
         this.code = code;
+        this.end = end;
+        this.created = created;
         this.points = points;
+        this.role_id = role_id;
     }
 
     public int getUser_id() {
@@ -156,11 +163,11 @@ public class User {
         this.identity = identity;
     }
 
-    public String getActive() {
+    public int getActive() {
         return active;
     }
 
-    public void setActive(String active) {
+    public void setActive(int active) {
         this.active = active;
     }
 
@@ -170,6 +177,22 @@ public class User {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public Timestamp getEnd() {
+        return end;
+    }
+
+    public void setEnd(Timestamp end) {
+        this.end = end;
+    }
+
+    public Timestamp getCreated() {
+        return created;
+    }
+
+    public void setCreated(Timestamp created) {
+        this.created = created;
     }
 
     public int getPoints() {

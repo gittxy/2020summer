@@ -1,59 +1,99 @@
 package com.example.bx_web.pojo;
 
-import java.util.Date;
+import java.math.BigInteger;
+import java.sql.Timestamp;
+
 public class Book {
-    private Long book_id;
-    private Long book_category_id;
-    private Long store_id;
+    private BigInteger book_id;
+    private int book_category_id;
+    private int store_id;
     private String name;
     private String outline;
     private String detail;
     private String press;
-    private String publish_date;
+    private String publish_data;
     private String size;
     private String version;
     private String author;
     private String translator;
     private String isbn;
-    private double price;
-    private Long pages;
+    private String price;
+    private String pages;
     private String catalog;
-    private double market_price;
-    private double member_price;;
-    private Long deal_mount;
-    private Long look_mount;
-    private double discount;
+    private String market_price;
+    private String member_price;
+    private String deal_mount;
+    private String look_mount;
+    private String discount;
     private String image_url;
-    private Long store_mount;
-    private Date store_time;
-    private String pack_style;
-    private Long is_shelf;
-    private String cname;
+    private int store_mount;
+    private Timestamp store_time;
+    private int is_shelf;
+    private String canme;
     private String description;
     private String cata;
     private String content;
 
-    public Long getBook_id() {
-        return book_id;
+    public Book() {
     }
 
-    public void setBook_id(Long book_id) {
+    public Book(BigInteger book_id) {
         this.book_id = book_id;
     }
 
-    public Long getBook_category_id() {
+    public Book(BigInteger book_id, int book_category_id, int store_id, String name, String outline, String detail, String press, String publish_data, String size, String version, String author, String translator, String isbn, String price, String pages, String catalog, String market_price, String member_price, String deal_mount, String look_mount, String discount, String image_url, int store_mount, Timestamp store_time, int is_shelf, String canme, String description, String cata, String content) {
+        this.book_id = book_id;
+        this.book_category_id = book_category_id;
+        this.store_id = store_id;
+        this.name = name;
+        this.outline = outline;
+        this.detail = detail;
+        this.press = press;
+        this.publish_data = publish_data;
+        this.size = size;
+        this.version = version;
+        this.author = author;
+        this.translator = translator;
+        this.isbn = isbn;
+        this.price = price;
+        this.pages = pages;
+        this.catalog = catalog;
+        this.market_price = market_price;
+        this.member_price = member_price;
+        this.deal_mount = deal_mount;
+        this.look_mount = look_mount;
+        this.discount = discount;
+        this.image_url = image_url;
+        this.store_mount = store_mount;
+        this.store_time = store_time;
+        this.is_shelf = is_shelf;
+        this.canme = canme;
+        this.description = description;
+        this.cata = cata;
+        this.content = content;
+    }
+
+    public BigInteger getBook_id() {
+        return book_id;
+    }
+
+    public void setBook_id(BigInteger book_id) {
+        this.book_id = book_id;
+    }
+
+    public int getBook_category_id() {
         return book_category_id;
     }
 
-    public void setBook_category_id(Long book_category_id) {
+    public void setBook_category_id(int book_category_id) {
         this.book_category_id = book_category_id;
     }
 
-    public Long getStore_id() {
+    public int getStore_id() {
         return store_id;
     }
 
-    public void setStore_id(Long store_id) {
+    public void setStore_id(int store_id) {
         this.store_id = store_id;
     }
 
@@ -89,12 +129,12 @@ public class Book {
         this.press = press;
     }
 
-    public String getPublish_date() {
-        return publish_date;
+    public String getPublish_data() {
+        return publish_data;
     }
 
-    public void setPublish_date(String publish_date) {
-        this.publish_date = publish_date;
+    public void setPublish_data(String publish_data) {
+        this.publish_data = publish_data;
     }
 
     public String getSize() {
@@ -137,19 +177,19 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
-    public Long getPages() {
+    public String getPages() {
         return pages;
     }
 
-    public void setPages(Long pages) {
+    public void setPages(String pages) {
         this.pages = pages;
     }
 
@@ -161,43 +201,43 @@ public class Book {
         this.catalog = catalog;
     }
 
-    public double getMarket_price() {
+    public String getMarket_price() {
         return market_price;
     }
 
-    public void setMarket_price(double market_price) {
+    public void setMarket_price(String market_price) {
         this.market_price = market_price;
     }
 
-    public double getMember_price() {
+    public String getMember_price() {
         return member_price;
     }
 
-    public void setMember_price(double member_price) {
+    public void setMember_price(String member_price) {
         this.member_price = member_price;
     }
 
-    public Long getDeal_mount() {
+    public String getDeal_mount() {
         return deal_mount;
     }
 
-    public void setDeal_mount(Long deal_mount) {
+    public void setDeal_mount(String deal_mount) {
         this.deal_mount = deal_mount;
     }
 
-    public Long getLook_mount() {
+    public String getLook_mount() {
         return look_mount;
     }
 
-    public void setLook_mount(Long look_mount) {
+    public void setLook_mount(String look_mount) {
         this.look_mount = look_mount;
     }
 
-    public double getDiscount() {
+    public String getDiscount() {
         return discount;
     }
 
-    public void setDiscount(double discount) {
+    public void setDiscount(String discount) {
         this.discount = discount;
     }
 
@@ -209,44 +249,36 @@ public class Book {
         this.image_url = image_url;
     }
 
-    public Long getStore_mount() {
+    public int getStore_mount() {
         return store_mount;
     }
 
-    public void setStore_mount(Long store_mount) {
+    public void setStore_mount(int store_mount) {
         this.store_mount = store_mount;
     }
 
-    public Date getStore_time() {
+    public Timestamp getStore_time() {
         return store_time;
     }
 
-    public void setStore_time(Date store_time) {
+    public void setStore_time(Timestamp store_time) {
         this.store_time = store_time;
     }
 
-    public String getPack_style() {
-        return pack_style;
-    }
-
-    public void setPack_style(String pack_style) {
-        this.pack_style = pack_style;
-    }
-
-    public Long getIs_shelf() {
+    public int getIs_shelf() {
         return is_shelf;
     }
 
-    public void setIs_shelf(Long is_shelf) {
+    public void setIs_shelf(int is_shelf) {
         this.is_shelf = is_shelf;
     }
 
-    public String getCname() {
-        return cname;
+    public String getCanme() {
+        return canme;
     }
 
-    public void setCname(String cname) {
-        this.cname = cname;
+    public void setCanme(String canme) {
+        this.canme = canme;
     }
 
     public String getDescription() {

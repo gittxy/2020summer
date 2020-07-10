@@ -1,46 +1,51 @@
 
 
-// function login(){
-//     var name=document.getElementById.Value("login_name");
-//     var pass=document.getElementById("login_password");
+function login(){
+    var name=document.getElementById("login_name").value;
+    var pass=document.getElementById("login_password").value;
+    localStorage.user_name=name;
+    alert("dui");
+    // if(document.getElementById('role_1').checked==true){
+    //     var role_id = 2; //用户
+    //     window.open("./UserIndex.html");  //用户主页
+    // }
+    // else if(document.getElementById('role_2').checked==true) {
+    //     var role_id = 3;//商家
+    //     window.open("./ShellerIndex.html");  //商家主页
+    //
+    // }
+    // else if(document.getElementById('role_3').checked==true) {
+    //     var role_id = 1;//管理员
+    //     window.open("./ManageIndex.html");  //管理员主页
+    // }
 
-
-//     req={"username":name, "password":pass, "role_id":role_id}
-
-//     if(name =="1"){
-//         window.open("./UserIndex.html");
-//     }
-// }
-
-
-function login() {
-    var name = document.getElementById("name");
-    var pass = document.getElementById("passw");
-    alert("进入方法");
-    // req = {"username": name, "password": pass}
     $.ajax({
         type: 'POST',
-        url: "http://localhost:8081/login",
-        dataType:"json",
+        url: "/login",
         data: {"username":name,"password":pass,"role_id":role_id},
+        dataType:"json",
         success: function (data) {
-            if(data["password"]=pass){
-                if(data["role_id"]=2){
-                    window.open("./UserIndex");  //用户主页
+            if(data==null){
+                alert("用户id或密码错误");
+            }
+            else{
+                if(data["role_id"]==2){
+                    window.open("./UserIndex.html");  //用户主页
                 }
-                if (data["role_id"]=3){
-                    window.open("./UserIndex");  //商家主页
+                if (data["role_id"]==3){
+                    window.open("./UserIndex.html");  //商家主页
                 }
-                if(data["role_id"]=1){
-                    window.open("./ManageIndex");
-                }
-                else{
-                    alert("用户id或密码错误");
+                if(data["role_id"]==1){
+                    window.open("./ManageIndex.html"); //管理员主页
                 }
             }
+        },
+        error: function (data) {
+            alert("失败了");
         }
     });
 }
+
 
 
 function register() {

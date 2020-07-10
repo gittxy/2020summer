@@ -2,8 +2,7 @@ package com.example.bx_web.mapper;
 
 import com.example.bx_web.pojo.User;
 import org.apache.ibatis.annotations.Mapper;
-
-import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface UserMapper {
@@ -11,7 +10,5 @@ public interface UserMapper {
     void userRegister(User user);
     User userinfo(int user_id);
     void modifyinfo(User user);
-    int add(User user);
-    int delete(int user_id);
-    List<User> getAllUser();
+    void rechargeMember(int user_id);
 }

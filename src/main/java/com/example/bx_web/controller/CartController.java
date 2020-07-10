@@ -2,7 +2,9 @@ package com.example.bx_web.controller;
 
 import com.example.bx_web.pojo.Cart;
 import com.example.bx_web.pojo.Total;
+import com.example.bx_web.pojo.User;
 import com.example.bx_web.service.CartService;
+import com.example.bx_web.service.UserService;
 import com.example.bx_web.utils.JsonUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -18,6 +20,8 @@ import java.util.List;
 public class CartController {
     @Autowired
     public CartService cartService;
+    @Autowired
+    public UserService userService;
 
     @RequestMapping(value = "/cart")
     public String Cart(String jsonStr) throws JSONException {
@@ -60,6 +64,13 @@ public class CartController {
         for (int i = 0; i < list.size(); i++) {
             total+=cartService.getTotal(list.get(i).getUser_id());
         }
+        int id=list.get(0).getUser_id();
+        User user=userService.userinfo(id);
+        if(user.getActive()==1){
+            total= (int) (total*0.9);
+        }
+        user.setPoints(total);
+        userService.modifyinfo(user);
         Total t =new Total();
         t.setTotal(total);
         return JsonUtils.putJson(t);
