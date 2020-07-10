@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 
 @Controller
@@ -74,6 +75,28 @@ public class UserController {
         User user = gson.fromJson(jsonStr, User.class);
         userService.rechargeMember(user.getUser_id());
         System.out.println(JsonUtils.putJson("success"));
+    }
+
+    @RequestMapping(value = "/addUser")
+    public void AddUser(String jsonStr) throws JSONException {
+        Gson gson = new Gson();
+        User user = gson.fromJson(jsonStr, User.class);
+        userService.add(user);
+    }
+
+    @RequestMapping(value = "/deleteUser")
+    public void DeleteUser(String jsonStr) throws JSONException {
+        Gson gson=new Gson();
+        User user = gson.fromJson(jsonStr, User.class);
+        userService.delete(user.getUser_id());
+    }
+
+
+    @RequestMapping(value = "/getTotalUser")
+    public String GetTotalUser() throws JSONException {
+        List<User> list = userService.getAllUser();
+
+        return JsonUtils.putJson(list);
     }
 
 }

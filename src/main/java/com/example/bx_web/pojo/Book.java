@@ -1,12 +1,11 @@
 package com.example.bx_web.pojo;
 
-import java.math.BigInteger;
 import java.sql.Timestamp;
 
 public class Book {
-    private BigInteger book_id;
-    private int book_category_id;
-    private int store_id;
+    private Long book_id;
+    private Long book_category_id;
+    private Long store_id;
     private String name;
     private String outline;
     private String detail;
@@ -26,9 +25,9 @@ public class Book {
     private String look_mount;
     private String discount;
     private String image_url;
-    private int store_mount;
+    private Long store_mount;
     private Timestamp store_time;
-    private int is_shelf;
+    private Long is_shelf;
     private String canme;
     private String description;
     private String cata;
@@ -37,11 +36,11 @@ public class Book {
     public Book() {
     }
 
-    public Book(BigInteger book_id) {
+    public Book(Long book_id) {
         this.book_id = book_id;
     }
 
-    public Book(BigInteger book_id, int book_category_id, int store_id, String name, String outline, String detail, String press, String publish_data, String size, String version, String author, String translator, String isbn, String price, String pages, String catalog, String market_price, String member_price, String deal_mount, String look_mount, String discount, String image_url, int store_mount, Timestamp store_time, int is_shelf, String canme, String description, String cata, String content) {
+    public Book(Long book_id, Long book_category_id, Long store_id, String name, String outline, String detail, String press, String publish_data, String size, String version, String author, String translator, String isbn, String price, String pages, String catalog, String market_price, String member_price, String deal_mount, String look_mount, String discount, String image_url, Long store_mount, Timestamp store_time, Long is_shelf, String canme, String description, String cata, String content) {
         this.book_id = book_id;
         this.book_category_id = book_category_id;
         this.store_id = store_id;
@@ -73,27 +72,27 @@ public class Book {
         this.content = content;
     }
 
-    public BigInteger getBook_id() {
+    public Long getBook_id() {
         return book_id;
     }
 
-    public void setBook_id(BigInteger book_id) {
+    public void setBook_id(Long book_id) {
         this.book_id = book_id;
     }
 
-    public int getBook_category_id() {
+    public Long getBook_category_id() {
         return book_category_id;
     }
 
-    public void setBook_category_id(int book_category_id) {
+    public void setBook_category_id(Long book_category_id) {
         this.book_category_id = book_category_id;
     }
 
-    public int getStore_id() {
+    public Long getStore_id() {
         return store_id;
     }
 
-    public void setStore_id(int store_id) {
+    public void setStore_id(Long store_id) {
         this.store_id = store_id;
     }
 
@@ -249,11 +248,11 @@ public class Book {
         this.image_url = image_url;
     }
 
-    public int getStore_mount() {
+    public Long getStore_mount() {
         return store_mount;
     }
 
-    public void setStore_mount(int store_mount) {
+    public void setStore_mount(Long store_mount) {
         this.store_mount = store_mount;
     }
 
@@ -265,11 +264,11 @@ public class Book {
         this.store_time = store_time;
     }
 
-    public int getIs_shelf() {
+    public Long getIs_shelf() {
         return is_shelf;
     }
 
-    public void setIs_shelf(int is_shelf) {
+    public void setIs_shelf(Long is_shelf) {
         this.is_shelf = is_shelf;
     }
 
